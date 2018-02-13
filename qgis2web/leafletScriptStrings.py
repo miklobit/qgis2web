@@ -119,6 +119,7 @@ def mapScript(extent, matchCRS, crsAuthId, measure, maxZoom, minZoom, bounds,
             crs: crs,
             continuousWorld: false,
             worldCopyJump: false, """
+    map += """ zoomSnap: 0.5, zoomDelta: 0.5, """        
     map += """
             zoomControl:true, maxZoom:""" + unicode(maxZoom)
     map += """, minZoom:""" + unicode(minZoom) + """
@@ -180,7 +181,7 @@ def extentScript(extent, restrictToExtent):
 def popFuncsScript(table):
     popFuncs = """
             var popupContent = %s;
-            layer.bindPopup(popupContent, {maxHeight: 400});""" % table
+            layer.bindPopup(popupContent, {maxHeight: 400, autoPan:false});""" % table
     return popFuncs
 
 
